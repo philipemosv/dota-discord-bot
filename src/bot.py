@@ -16,9 +16,10 @@ async def on_ready():
 
 
 async def load_extensions():
-    await bot.load_extension('commands.win_loss')
     await bot.load_extension('commands.register')
-    await bot.load_extension('commands.bagre')
+    await bot.load_extension('commands.win_loss')
+    await bot.load_extension('commands.stats')
+    await bot.load_extension('commands.miscellaneous')
 
 async def main():
     async with bot:
