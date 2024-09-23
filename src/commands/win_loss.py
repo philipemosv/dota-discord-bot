@@ -13,7 +13,7 @@ class WinLoss(commands.Cog):
         discord_id = str(ctx.author.id)
 
         if discord_id not in user_dota_accounts:
-            await ctx.send(f"{ctx.author.mention}\nSua conta ainda não está registrada.\nUse !register <account_id> para registrar.")
+            await ctx.send(f"{ctx.author.mention}\nYour account is not registered yet.\nUse !register <account_id> to register.")
             return
         
         account_id = user_dota_accounts[discord_id]
@@ -27,12 +27,12 @@ class WinLoss(commands.Cog):
             win_rate = performance['winrate']
             day = performance['day']
 
-            period_text = f"Últimos {day} dias" if days else f"Dia {day}"
+            period_text = f"Last {day} days" if days else f"Day {day}"
             balance = wins - losses
             response = (
                 f"{ctx.author.mention}\n"
-                f"{period_text}: {wins} Vitórias | {losses} Derrotas | WinRate: {win_rate}%\n"
-                f"Saldo: {balance}"
+                f"{period_text}: {wins} Wins | {losses} Losses | WinRate: {win_rate}%\n"
+                f"Balance: {balance}"
             )
             await ctx.send(response)
             
