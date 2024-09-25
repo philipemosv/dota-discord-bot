@@ -28,10 +28,6 @@ class Miscellaneous(commands.Cog):
         """Show the bot's repository link."""
         await ctx.send("https://github.com/philipemosv/dota-discord-bot")
 
-    @commands.command(name="bagre")
-    async def show_bagre(self, ctx):
-        """Show the name of the 'bagre' player."""
-        await ctx.send("Davi")
 
 async def setup(bot):
     await bot.add_cog(Miscellaneous(bot))
