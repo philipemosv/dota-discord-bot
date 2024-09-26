@@ -23,7 +23,7 @@ def get_start_of_day(days=0):
     now_utc = datetime.now(timezone.utc)
     today_brt = now_utc.astimezone(timezone(timedelta(hours=-3)))
     delta_time = today_brt - timedelta(days=days)
-    return int(datetime(delta_time.year, delta_time.month, delta_time.day).timestamp())
+    return int(datetime(delta_time.year, delta_time.month, delta_time.day, tzinfo=timezone(timedelta(hours=-3))).timestamp())
 
 def fetch_matches(account_id, is_victory, start_of_day, game_mode='ALL_PICK_RANKED'):
     """Fetch matches for a given player based on victory status and date."""
