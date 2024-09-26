@@ -14,7 +14,6 @@ class Miscellaneous(commands.Cog):
   - If no days are given, shows the wins and losses for today.
 - **!commands**: List all the available commands for the bot.
 - **!code**: Show the bot's repository link.
-- **!bagre**: Show the name of the most 'bagre' player in Brazil.
 """
 
     @commands.command(name="commands")
