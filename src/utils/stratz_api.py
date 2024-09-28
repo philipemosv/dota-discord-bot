@@ -125,3 +125,29 @@ def get_player_heroes_win_loss(account_id, days=0):
         }
 
     return heroes_summary
+
+def get_top_heroes_by_matches(account_id, position):
+    query = f"""
+    {{
+      heroStats {{
+        winWeek(
+          positionIds: [POSITION_{position}]
+          bracketIds: IMMORTAL
+          gameModeIds: [ALL_PICK_RANKED]
+          take: 1
+        ) {{
+          heroId
+          winCount
+          matchCount
+          durationMinute
+        }}
+      }}
+    }}
+    """
+
+    data = make_query(query)
+    
+    heroes = data['data']['heroStats']['winWeek']
+       
+    sorted_heroes = sorted(heroes, key=lambda x: x['matchCount'], reverse=True)[:5]
+    return sorted_heroes
