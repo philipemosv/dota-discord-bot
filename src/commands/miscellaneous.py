@@ -12,6 +12,7 @@ class Miscellaneous(commands.Cog):
   - If no days are given, shows the wins and losses for today.
 - **!stats [days]**: Show the statistics of win and losses of all your heroes played in a given period (days), up to a maximum of 30 days.
   - If no days are given, shows the wins and losses for today.
+- **!meta [position]**: Show the 5 most picked heroes for the given position in the immortal rank over the last 7 days.
 - **!commands**: List all the available commands for the bot.
 - **!code**: Show the bot's repository link.
 """
