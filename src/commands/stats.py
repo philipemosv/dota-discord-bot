@@ -1,7 +1,6 @@
 from discord.ext import commands
 from utils.stratz_api import get_player_heroes_win_loss
-from commands.register import user_dota_accounts
-
+from database import db
 
 class Stats(commands.Cog):
     def __init__(self, bot):
@@ -11,11 +10,11 @@ class Stats(commands.Cog):
     async def stats(self, ctx, days: int = 0):
         discord_id = str(ctx.author.id)
 
-        if discord_id not in user_dota_accounts:
+        account_id = db.get_dota_account(discord_id)
+
+        if not account_id:
             await ctx.send(f"{ctx.author.mention}\nYour account is not registered yet.\nUse `!register <account_id>` to register.")
             return
-
-        account_id = user_dota_accounts[discord_id]
 
         days = max(0, min(days, 30))
 

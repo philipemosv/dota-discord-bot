@@ -1,7 +1,6 @@
 from discord.ext import commands
 from utils.stratz_api import get_player_win_loss
-from commands.register import user_dota_accounts
-
+from database import db
 
 class WinLoss(commands.Cog):
     def __init__(self, bot):
@@ -12,11 +11,11 @@ class WinLoss(commands.Cog):
         """Show win/loss stats for a given period (days) up to 30 days."""
         discord_id = str(ctx.author.id)
 
-        if discord_id not in user_dota_accounts:
+        account_id = db.get_dota_account(discord_id)
+        
+        if not account_id: 
             await ctx.send(f"{ctx.author.mention}\nYour account is not registered yet.\nUse `!register <account_id>` to register.")
             return
-
-        account_id = user_dota_accounts[discord_id]
 
         days = max(0, min(days, 30))
 

@@ -126,7 +126,7 @@ def get_player_heroes_win_loss(account_id, days=0):
 
     return heroes_summary
 
-def get_top_heroes_by_matches(account_id, position):
+def get_top_heroes_by_matches(position):
     query = f"""
     {{
       heroStats {{
