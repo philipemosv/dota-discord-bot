@@ -1,6 +1,5 @@
 from discord.ext import commands
-from utils.stratz_api import get_top_heroes_by_matches  # New function for fetching stats
-from commands.register import user_dota_accounts
+from utils.stratz_api import get_top_heroes_by_matches
 from utils.heroes import heroes
 
 class Meta(commands.Cog):
@@ -10,22 +9,12 @@ class Meta(commands.Cog):
     @commands.command(name="meta")
     async def top_heroes(self, ctx, position: int = 0):
         """Show top 5 heroes with the most matches for a specified position (1-5)."""
-        discord_id = str(ctx.author.id)
-
-        if discord_id not in user_dota_accounts:
-            await ctx.send(f"{ctx.author.mention}\nYour account is not registered yet.\nUse `!register <account_id>` to register.")
-            return
-
-        # Validate the position input
         if position < 1 or position > 5:
             await ctx.send(f"{ctx.author.mention}\nPlease provide a valid position number (1-5).")
             return
 
-        account_id = user_dota_accounts[discord_id]
-
         try:
-            # Retrieve top hero stats from the Stratz API
-            performance = get_top_heroes_by_matches(account_id, position)
+            performance = get_top_heroes_by_matches(position)
             
             response = self.build_response(ctx.author.mention, performance, position)
 
@@ -50,7 +39,6 @@ class Meta(commands.Cog):
             wins = stat['winCount']
             win_rate = self.calculate_win_rate(wins, matches)
 
-            # Add hero stats to the response
             response += f"| {hero_name:<18} | {matches:<7} | {win_rate:<3.1f}% |\n"
 
         response += "```"
