@@ -44,7 +44,7 @@ class Stats(commands.Cog):
         sorted_heroes = sorted(heroes_summary.items(), key=lambda item: (item[1]['Total Matches'], item[1]['Winrate']), reverse=True)
 
         for hero, stats in sorted_heroes:
-            response += f"| {hero:<18} | {stats['Total Matches']:>2} | {stats['Wins']:>2} | {stats['Losses']:>2} | {stats['Winrate']:>6.2f}% |\n"
+            response += f"| {hero:<18} | {stats['Total Matches']:>2} | {stats['Wins']:>2} | {stats['Losses']:>2} | {stats['Winrate']:>6.1f}% |\n"
 
         response += "```"
         return response
