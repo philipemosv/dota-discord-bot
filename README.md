@@ -48,4 +48,4 @@ This Discord bot allows Dota 2 players to get a quick summary of their performan
   
 
 
-![image](https://github.com/user-attachments/assets/8c70c598-84b0-4f59-9240-0ccd473026af)
+[![image](https://github.com/user-attachments/assets/8c70c598-84b0-4f59-9240-0ccd473026af)](https://stratz.com/)
