@@ -1,15 +1,20 @@
-﻿# Dota 2 Discord Bot using STRATZ GraphQL API
+# Dota 2 Discord Bot
 
-This Discord bot allows Dota 2 players to get a quick summary of their win/loss performance and win rate over a specific period using the [STRATZ GraphQL API](https://stratz.com/graphql). Players can request their performance statistics from the last few days directly within a Discord server, helping them track their recent progress.
+This Discord bot allows Dota 2 players to get a quick summary of their performance, hero stats, and meta trends using the [STRATZ GraphQL API](https://stratz.com/graphql). Players can track their progress and hero usage directly within Discord.
 
 ## Features:
-- **Win/Loss Tracking**: Get the number of wins, losses, and overall win rate for a specified number of days (up to 30 days).
-- **Simple Command**: The bot offers a user-friendly command to retrieve your Dota 2 statistics quickly.
+- **Win/Loss Tracking**: Retrieve the number of wins, losses, and win rate for a specified number of days (up to 30).
+- **Hero Stats**: Display win/loss statistics for all heroes over a given period.
+- **Meta Trends**: Show the 5 most picked heroes by position, or across all positions if no position is provided.
+- **Database Integration**: Store player and match data for historical tracking.
+- **Docker Support**: Easily deploy and run the bot in a Docker container.
 
 ## Technologies:
-- **Discord.py**: For interacting with Discord and managing bot commands.
-- **STRATZ GraphQL API**: To query Dota 2 match statistics.
-- **Python**: The core language used to build the bot.
+- **STRATZ GraphQL API**: Used to fetch Dota 2 match statistics.
+- **Python**: The core language for the bot.
+- **Discord.py**: For managing bot commands and interaction with Discord.
+- **SQLite3**: Lightweight database used to store player and match data.
+- **Docker**: Containerization for easy deployment and environment management.
 
 ## Setup:
 
@@ -30,12 +35,17 @@ This Discord bot allows Dota 2 players to get a quick summary of their win/loss 
     ```bash
     python bot.py
 
-## Commands:
-
-- `!wl [days]`: This command returns the number of wins, losses, and win rate over the past `[days]` days (up to a maximum of 30 days). For example:
+5. Alternatively, build and run the bot using Docker:
     ```bash
-    !wl 7
+    docker build -t dota-discord-bot .
+    docker run --env-file .env dota-discord-bot
 
-## Future Features:
-- More advanced stats like hero performance, specific match details, and rankings.
-- Additional commands for querying match history or hero performance.
+## Commands:
+- `!commands`: List all the available commands for the bot.
+- `!wl [days]`: Returns the number of wins, losses, and win rate over the last [days] days (up to a maximum of 30 days).
+- `!stats [days]`: Displays win/loss statistics for all heroes played over the specified number of days.
+- `!meta [position]`: Shows the 5 most picked heroes for the given position in the immortal rank over the last 7 days.
+  
+
+
+![image](https://github.com/user-attachments/assets/8c70c598-84b0-4f59-9240-0ccd473026af)
