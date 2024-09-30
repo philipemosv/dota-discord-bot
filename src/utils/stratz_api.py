@@ -131,7 +131,7 @@ def get_top_heroes_by_matches(position):
     {{
       heroStats {{
         winWeek(
-          positionIds: [POSITION_{position}]
+          {"" if position == 0 else "positionIds: [POSITION_" + str(position) + "]"}
           bracketIds: IMMORTAL
           gameModeIds: [ALL_PICK_RANKED]
           take: 1
@@ -144,7 +144,7 @@ def get_top_heroes_by_matches(position):
       }}
     }}
     """
-
+    
     data = make_query(query)
     
     heroes = data['data']['heroStats']['winWeek']

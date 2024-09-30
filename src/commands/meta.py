@@ -8,11 +8,11 @@ class Meta(commands.Cog):
 
     @commands.command(name="meta")
     async def top_heroes(self, ctx, position: int = 0):
-        """Show top 5 heroes with the most matches for a specified position (1-5)."""
-        if position < 1 or position > 5:
-            await ctx.send(f"{ctx.author.mention}\nPlease provide a valid position number (1-5).")
+        """Show top 5 heroes with the most matches for a specified position (1-5-all)."""
+        if position < 0 or position > 5:
+            await ctx.send(f"{ctx.author.mention}\nPlease provide a valid position number (0-5).")
             return
-
+        
         try:
             performance = get_top_heroes_by_matches(position)
             
@@ -29,7 +29,7 @@ class Meta(commands.Cog):
             return f"{mention}\nNo data available for the requested position."
 
         response = f"{mention}```markdown\n"
-        response += f"# META Position {position} (Last 7 days)\n"
+        response += f"# META Position {'ALL' if position < 1 or position > 5 else position} (Last 7 days)\n"
         response += "| Hero               | Matches |   WR  |\n"
         response += "|--------------------|---------|-------|\n"
     
