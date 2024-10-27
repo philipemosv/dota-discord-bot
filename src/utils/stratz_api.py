@@ -9,7 +9,11 @@ STRATZ_URL = "https://api.stratz.com/graphql"
 
 def make_query(query):
     """Send a GraphQL query to the Stratz API and return the response data."""
-    headers = {"Authorization": f"Bearer {STRATZ_API_KEY}"}
+    headers = {
+        "Authorization": f"Bearer {STRATZ_API_KEY}",
+        "Content-Type": "application/json",
+        "User-Agent": "STRATZ_API"
+    }
     payload = {"query": query}
     response = requests.post(STRATZ_URL, json=payload, headers=headers)
     
